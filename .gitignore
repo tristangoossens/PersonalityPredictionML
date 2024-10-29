@@ -1,0 +1,8 @@
+# API pycache files
+api/**/__pycache__/
+
+# Dataset files
+data/
+
+# Website package files
+website/node_modules/
