@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title Pug starter
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        link(rel='icon' href='favicon.ico')
+        link(rel='stylesheet' href='/styles/main.css')
+
+    body
+        h1 Pug express templat
+        h2 Example data from server
+
+        //- Loop through data object
+        each val in data
+            //- Pretty print JSON
+            pre=JSON.stringify(val, null , 2)

@@ -15,8 +15,8 @@ class PredictionService:
         return self._respondent_data
 
     def __init__(self):
-        self._model = load_model('../models/personality_prediction_ann.h5')
-        self._respondent_data = pd.read_csv('../data/respondent_data.csv')
+        self._model = load_model('models/personality_prediction_ann.h5')
+        self._respondent_data = pd.read_csv('data/respondent_data.csv')
     
     # Converting an incomplete data dictionary to a complete DataFrame (with NaNs for missing values)
     def _convert_to_complete_df(self, data_dict):

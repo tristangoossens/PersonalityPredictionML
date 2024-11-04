@@ -1,0 +1,23 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app/api
+      - ./data:/app/data
+      - ./models:/app/models
+    environment:
+      - ENV=development
+  good-website:
+    build:
+      context: ./website/good
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./website/good:/app/good-website
+    environment:
+      - ENV=development

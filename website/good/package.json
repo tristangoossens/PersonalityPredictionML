@@ -1,0 +1,29 @@
+{
+    "name": "pug-template",
+    "description": "A simple pug starter template made with nodejs and express",
+    "version": "1.0.0",
+    "license": "MIT",
+    "author": {
+        "name": "Tristan Goossens",
+        "email": "tristangoossens3@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "dependencies": {
+        "axios": "^1.7.7",
+        "dotenv": "^16.4.5",
+        "express": "^4.21.1",
+        "pug": "^3.0.3"
+    },
+    "devDependencies": {
+        "browser-sync": "^3.0.3",
+        "concurrently": "^9.0.1",
+        "nodemon": "^3.1.7"
+    },
+    "scripts": {
+        "start": "node ./src/server.mjs",
+        "start:dev": "concurrently \"nodemon --ext mjs,js,pug,css ./src/server.mjs\" \"browser-sync start --proxy localhost:3001 --files 'public, views\""
+    }
+}

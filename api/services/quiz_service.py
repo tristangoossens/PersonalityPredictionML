@@ -8,7 +8,7 @@ class QuizService:
         return self._questions_dict
 
     def __init__(self):
-        with open('../data/question_data.csv', 'r') as file:
+        with open('data/question_data.csv', 'r') as file:
             reader = csv.reader(file)
             
             # Skip the header

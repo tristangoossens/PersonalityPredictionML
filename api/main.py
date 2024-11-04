@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from services.prediction_service import PredictionService 
-from services.quiz_service import QuizService
+from api.services.prediction_service import PredictionService
+from api.services.quiz_service import QuizService
 
 app = FastAPI()
 prediction_service = PredictionService()
@@ -24,4 +24,3 @@ def predict():
     print(predictions)
     print("\n\n")
     print(predictions.argmax())
-    
