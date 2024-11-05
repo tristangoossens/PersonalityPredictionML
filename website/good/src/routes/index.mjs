@@ -3,12 +3,20 @@ import express from 'express';
 const router = express.Router();
 
 // Services
-import * as dataService from '../services/dataService.mjs';
-
+import * as quizService from '../services/quizService.mjs';
 
 router.get('/', async (req, res) => {
-    const data = await dataService.getData();
-    res.render('index', { title: 'Pug Template', data: data});
+    res.render('index');
+});
+
+router.get('/about', (req, res) => {
+    res.render('about');
+});
+
+router.get('/quiz', async (req, res) => {
+    const quizData = await quizService.getData();
+    
+    res.render('quiz', { questions: quizData.questions });
 });
 
 export default router;

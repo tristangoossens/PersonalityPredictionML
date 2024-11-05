@@ -1,6 +1,6 @@
 {
-    "name": "pug-template",
-    "description": "A simple pug starter template made with nodejs and express",
+    "name": "good-website",
+    "description": "A website that follows ethical guidelines for AI",
     "version": "1.0.0",
     "license": "MIT",
     "author": {
@@ -13,17 +13,16 @@
     },
     "dependencies": {
         "axios": "^1.7.7",
-        "dotenv": "^16.4.5",
-        "express": "^4.21.1",
-        "pug": "^3.0.3"
-    },
-    "devDependencies": {
+        "bootstrap": "^5.3.3",
         "browser-sync": "^3.0.3",
         "concurrently": "^9.0.1",
-        "nodemon": "^3.1.7"
+        "dotenv": "^16.4.5",
+        "express": "^4.21.1",
+        "nodemon": "^3.1.7",
+        "pug": "^3.0.3"
     },
     "scripts": {
         "start": "node ./src/server.mjs",
-        "start:dev": "concurrently \"nodemon --ext mjs,js,pug,css ./src/server.mjs\" \"browser-sync start --proxy localhost:3001 --files 'public, views\""
+        "start:dev": "nodemon --watch ./src --watch ./public --ext mjs,js,pug,css ./src/server.mjs --legacy-watch"
     }
 }

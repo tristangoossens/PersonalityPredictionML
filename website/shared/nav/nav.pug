@@ -1,0 +1,19 @@
+mixin nav(logo_url, active_page)
+    .navbar.navbar-light.navbar-expand-lg.border-bottom.bg-light
+        .container-fluid
+            .navbar-brand.pe-3.d-flex
+                img.img-fluid(src=logo_url, alt='Logo', width='75')
+                h1.navbar-title.my-auto
+                    | Personality
+                    span.color-span Predictor
+            button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarNav.collapse.navbar-collapse
+                ul.navbar-nav
+                    li.nav-item
+                        a.nav-link(class=active_page === 'home' ? 'active' : '', href='/') home
+                    li.nav-item
+                        a.nav-link(class=active_page === 'quiz' ? 'active' : '', href='/quiz') quiz
+                    li.nav-item
+                        a.nav-link(class=active_page === 'about' ? 'active' : '', href='/about') about
+

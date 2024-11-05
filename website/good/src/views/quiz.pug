@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        title Quiz start | PersonalityPredictor
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        link(rel='icon' href='favicon.png')
+        link(rel='stylesheet' href='/styles/main.css')
+
+    body
+        include ../../shared/nav/nav.pug
+        include ../../shared/quiz/quiz.pug
+        +nav('/images/logo-good.png', 'quiz')
+
+        .container.py-5
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title Personality Quiz
+                        p.page-description Answer questions to find out your personality type
+                        form(action='/quiz', method='get')
+            .row
+                .col-12
+                    +questionSliderForm(questions)

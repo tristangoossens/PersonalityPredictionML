@@ -4,14 +4,17 @@ FROM node:20
 # Set the working directory
 WORKDIR /app
 
-# Copy everything from the current directory to the working directory
-COPY . .
+# Copy the package.json file
+COPY ./good/package.json ./
 
 # Install the dependencies
-RUN yarn install
+RUN npm install
+
+# Copy everything from the current directory to the working directory
+COPY ./good .
 
 # Expose the port
 EXPOSE 3000
 
 # Start the application
-CMD ["yarn", "start"]
+CMD ["npm", "run", "start:dev"]

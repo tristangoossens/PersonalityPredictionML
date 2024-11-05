@@ -21,6 +21,7 @@ def predict():
         "Q20": 3
     })
 
+    print("cuhh")
     print(predictions)
     print("\n\n")
     print(predictions.argmax())

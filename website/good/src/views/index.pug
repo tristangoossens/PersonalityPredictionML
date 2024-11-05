@@ -1,18 +1,20 @@
 doctype html
 html
     head
-        title Pug starter
+        title Home | PersonalityPredictor
         meta(charset='utf-8')
         meta(name='viewport' content='width=device-width, initial-scale=1')
 
-        link(rel='icon' href='favicon.ico')
+        link(rel='icon' href='favicon.png')
         link(rel='stylesheet' href='/styles/main.css')
 
     body
-        h1 Pug express templat
-        h2 Example data from server
+        include ../../shared/nav/nav.pug
+        +nav('/images/logo-good.png', 'home')
 
-        //- Loop through data object
-        each val in data
-            //- Pretty print JSON
-            pre=JSON.stringify(val, null , 2)
+        .container.py-5
+            .row.justify-content-center
+                .col-12
+                    .page-header
+                        h2.page-title Personality Predictor
+                        p.page-description Welcome to Personality Predictor, a tool that helps you understand your personality better. This website uses a machine learning model to predict your personality based on your answers to a series of questions. Take the quiz to get started

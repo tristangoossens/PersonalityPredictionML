@@ -1,0 +1,28 @@
+mixin questionSliderForm(questions)
+  form#questionForm(method="post" action="/submit")
+    each question, index in questions
+      - const questionId = question[0]
+      - const questionText = question[1]
+
+      .question-container(style={display: index === 0 ? 'block' : 'none'})
+        label(for=questionId) #{questionText}
+        input(type="range" class="form-range" min="-3" max="3" step="1" id=questionId name=questionId)
+        div.d-flex.justify-content-between
+          span Fully Disagree
+          span Neutral
+          span Fully Agree
+        if index < questions.length - 1
+          button.btn.btn-secondary(type="button" onclick="showNextQuestion(event)") Next
+        else
+          button.btn.btn-primary(type="submit") Submit Answers
+
+
+script.
+    function showNextQuestion(event) {
+        const currentQuestion = event.target.closest('.question-container');
+        const nextQuestion = currentQuestion.nextElementSibling;
+        if (nextQuestion && nextQuestion.classList.contains('question-container')) {
+        currentQuestion.style.display = 'none';
+        nextQuestion.style.display = 'block';
+        }
+    }

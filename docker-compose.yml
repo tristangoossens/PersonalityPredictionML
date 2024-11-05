@@ -11,13 +11,23 @@ services:
       - ./models:/app/models
     environment:
       - ENV=development
+    networks:
+      - predictionnetwork
   good-website:
     build:
-      context: ./website/good
-      dockerfile: Dockerfile
+      context: ./website
+      dockerfile: ./good/Dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - ./website/good:/app/good-website
+      - ./website/good:/app
+      - ./website/shared:/app/shared
+      - /app/node_modules
     environment:
-      - ENV=development
+      - NODE_ENV=development
+    networks:
+      - predictionnetwork
+
+networks:
+  predictionnetwork:
+    driver: bridge
