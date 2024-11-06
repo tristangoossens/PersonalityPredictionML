@@ -1,25 +1,34 @@
 doctype html
 html
     head
-        title Quiz start | PersonalityPredictor
+        title Quiz | PersonalityPredictor
         meta(charset='utf-8')
         meta(name='viewport' content='width=device-width, initial-scale=1')
 
-        link(rel='icon' href='favicon.png')
+        link(rel='icon' href='/favicon.png')
         link(rel='stylesheet' href='/styles/main.css')
 
     body
         include ../../shared/nav/nav.pug
         include ../../shared/quiz/quiz.pug
-        +nav('/images/logo-good.png', 'quiz')
+        +nav('/images/logo-good.png', 'home')
 
         .container.py-5
-            .row.justify-content-center.mb-5
+            .row.justify-content-center
                 .col-12
                     .page-header
-                        h2.page-title Personality Quiz
-                        p.page-description Answer questions to find out your personality type
-                        form(action='/quiz', method='get')
-            .row
-                .col-12
-                    +questionSliderForm(questions)
+                        h2.page-title Quiz
+                        p.page-subtitle Answer the questions below to predict your personality type. Answer by sliding the slider to the position that best represents your opinion.
+                    .info-container.bg-light.rounded-bottom.p-3
+                        .d-flex.mb-3
+                            span.badge.badge-status.me-2
+                                span#questionCounter 1/
+                                span#questionTotal #{questions.length}
+                            span#selectedAnswer.badge.badge-status Selected: Neutral
+                        .py-3
+                            +questionSliderForm(questions)
+
+                        .alert.alert-info.mt-3
+                            i.bi.bi-info-circle.me-2
+                            | Dont worry, your answers are not stored. We only use them to predict your personality type. learn more about it 
+                            a(href="/about#dataCollection", target="_BLANK") here

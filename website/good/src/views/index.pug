@@ -5,7 +5,7 @@ html
         meta(charset='utf-8')
         meta(name='viewport' content='width=device-width, initial-scale=1')
 
-        link(rel='icon' href='favicon.png')
+        link(rel='icon' href='/favicon.png')
         link(rel='stylesheet' href='/styles/main.css')
 
     body
@@ -16,5 +16,27 @@ html
             .row.justify-content-center
                 .col-12
                     .page-header
-                        h2.page-title Personality Predictor
-                        p.page-description Welcome to Personality Predictor, a tool that helps you understand your personality better. This website uses a machine learning model to predict your personality based on your answers to a series of questions. Take the quiz to get started
+                        h2.page-title Home
+                    .info-container.bg-light.rounded-bottom.p-3.text-center
+                        img.img-fluid(src="/images/logo-good.png", alt="Personality Predictor logo")
+                        h3.home-title.fw-bold Welcome to Personality 
+                            span.color-span Predictor!
+                        p.home-description.mb-3 We're excited to help you explore your personality! This quiz is designed to give you insights into your unique traits based on your answers. Here's what to expect
+
+                        .text-start.mt-5
+                            h4.home-subtitle.mb-0
+                                span.color-span 1.
+                                |  Choose the amount of questions
+                            p.home-description.mb-3 For the best results, we recommend answering all 60 questions. But if you're short on time, feel free to answer fewer.
+
+                            h4.home-subtitle.mb-0
+                                span.color-span 2.
+                                |  Answer honestly
+                            p.home-description.mb-3 Each question is designed to capture a different aspect of your personality. Answering honestly will give you the most accurate results!
+
+                            h4.home-subtitle.mb-0
+                                span.color-span 3.
+                                |  Get your results
+                            p.home-description.mb-3 Once you finish, our AI will analyze your responses and predict your personality type. You'll learn about your strengths and weaknesses
+
+                            a.btn.btn-pp(href="/quiz") Start Quiz

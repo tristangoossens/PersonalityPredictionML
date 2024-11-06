@@ -8,6 +8,9 @@ dotenv.config();
 
 // Create an app
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 
 // Set view engine to Pug
 app.set('view engine', 'pug');

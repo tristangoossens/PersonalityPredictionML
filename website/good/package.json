@@ -23,6 +23,6 @@
     },
     "scripts": {
         "start": "node ./src/server.mjs",
-        "start:dev": "nodemon --watch ./src --watch ./public --ext mjs,js,pug,css ./src/server.mjs --legacy-watch"
+        "start:dev": "nodemon --watch ./src --watch ./public --watch ./shared --ext mjs,js,pug,css ./src/server.mjs --legacy-watch"
     }
 }

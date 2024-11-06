@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        title Results | PersonalityPredictor
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        link(rel='icon' href='/favicon.png')
+        link(rel='stylesheet' href='/styles/main.css')
+
+    body
+        include ../../shared/nav/nav.pug
+        +nav('/images/logo-good.png', 'quiz')
+
+        .container.py-5
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title Result
+                    .info-container.bg-light.rounded-bottom.p-4.text-center
+                        img.img-fluid(src=personality_data.image_path, alt=personality_data.name)
+                        h3.results-title.mt-3.fw-bold You are a  #{personality_data.name}!
+
+                        //- Personality badges
+                        .d-flex.mt-1.justify-content-center.mb-3
+                            span.badge.bg-secondary.me-2 #{personality_data.code}
+                            span.badge(class=`${personality_data.category.toLowerCase()}-badge`) #{personality_data.category}
+
+                        p.results-description #{personality_data.description}
+                        hr.mb-4
+
+                        //- Strengths and Weaknesses Lists
+                        .row.my-4
+                            .col-md-6
+                                h4.results-subtitle.mb-2 Strengths
+                                ul.list-unstyled
+                                    each strength in personality_data.strengths
+                                        li
+                                            i.bi.bi-check-circle.me-2.text-success
+                                            | #{strength}
+                            .col-md-6
+                                h4.results-subtitle.mb-2 Weaknesses
+                                ul.list-unstyled
+                                    each weakness in personality_data.weaknesses
+                                        li
+                                            i.bi.bi-x-circle.me-2.text-danger
+                                            | #{weakness}
+
+                        .d-flex.flex-row.my-3.justify-content-center
+                            a.btn.btn-pp.me-3(href="/quiz", target="_BLANK") Retake Quiz
+                            a.btn.btn-pp-no-action(href="/personalities", target="_BLANK") Other personalities
+
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title How confident is the model?
+                        p.page-subtitle The model makes a prediction and scores the confidence for each of the personalities based on your answer. While the model is usually confident in its score, it may not always be 100% accurate. The graph below shows the confidence scores for each of the personalities.
+                    .info-container.bg-light.rounded-bottom.p-4.text-center
+                        //- Confidence graph
+                        img.img-fluid.mt-3(src=`data:image/png;base64, ${plot}`, alt='Confidence graph')
+

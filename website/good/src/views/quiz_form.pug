@@ -1,0 +1,49 @@
+doctype html
+html
+    head
+        title Quiz start | PersonalityPredictor
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        link(rel='icon' href='/favicon.png')
+        link(rel='stylesheet' href='/styles/main.css')
+
+    body
+        include ../../shared/nav/nav.pug
+        include ../../shared/quiz/quiz.pug
+        +nav('/images/logo-good.png', 'quiz')
+
+        .container.py-5
+            .row.justify-content-center.mb-3
+                .col-12
+                    .page-header
+                        h2.page-title Personality Quiz
+                        p.page-subtitle Welcome to the personality quiz! Configure down below how many questions you'd like to answer, and we'll predict your personality type based on your responses.
+                    .info-container.bg-light.rounded-bottom.p-4
+                        h3.results-title.fw-bold Personality quiz form
+                        form(method='POST' action='/quiz/start')
+                            .mb-3
+                                label.form-label(for="questionCount") Question count
+                                select#questionCount.form-control(aria-describedby="questionCountHelp", name="questionCount")
+                                    option(value="10") 10
+                                    option(value="20") 20
+                                    option(value="30") 30
+                                    option(value="40") 40
+                                    option(value="50") 50
+                                    option(value="60", selected) 60
+                                #questionCountHelp.form-text Pick the amount of questions you'd like to answer
+                            .alert.alert-warning.mt-3#accuracyWarning(style="display: none;")
+                                i.bi.bi-exclamation-triangle-fill.me-2
+                                | Warning: Selecting fewer than 60 questions may result in less accurate predictions. learn more about it 
+                                a(href="/about#howDoesItWork", target="_BLANK") here
+                            button.btn.btn-pp(type="submit") Submit
+
+    script.
+        document.getElementById('questionCount').addEventListener('change', function() {
+            var warning = document.getElementById('accuracyWarning');
+            if (this.value != '60') {
+                warning.style.display = 'block';
+            } else {
+                warning.style.display = 'none';
+            }
+        });

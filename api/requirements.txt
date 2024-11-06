@@ -3,4 +3,5 @@ pandas
 fastapi
 uvicorn
 tensorflow
+matplotlib
 scikit-learn

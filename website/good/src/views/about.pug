@@ -5,16 +5,52 @@ html
         meta(charset='utf-8')
         meta(name='viewport' content='width=device-width, initial-scale=1')
 
-        link(rel='icon' href='favicon.png')
+        link(rel='icon' href='/favicon.png')
         link(rel='stylesheet' href='/styles/main.css')
 
     body
         include ../../shared/nav/nav.pug
         +nav('/images/logo-good.png', 'about')
 
-        section.page
-            .container.py-5
-                .row.justify-content-center
-                    .col-12.text-center
-                        h2 About
+        .container.py-5
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title About
+                    .info-container.bg-light.rounded-bottom.p-3.text-center
+                        img.img-fluid(src="/images/logo-good.png", alt="Personality Predictor logo")
+                        h3.results-title.fw-bold About Personality 
+                            span.color-span Predictor
+                        p.results-description.mb-0 Find out more about how Personality predictor works, what we do with your data and what other personalities you could be matched with.
 
+            #howDoesItWork.row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title How is my personality determined?
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        p When you take our personality quiz, you can choose how many questions you’d like to answer. While the full quiz has 60 questions, you don’t have to complete all of them! If you answer fewer questions, we use a method called K-Nearest Neighbors (KNN) to predict your missing answers.
+                        p K-Nearest Neighbors, or KNN, is a technique that looks at how similar your answers are to others who have taken the quiz. It finds people who answered questions in a similar way and uses their responses to fill in any questions you may have skipped. This lets us make sure we’re using a complete set of answers when predicting your personality type, even if you didn’t answer every question yourself.
+                        p Once we have a full set of answers for you, we run them through our classification model—a Fully Connected Neural Network (FCNN). This model has been trained on answers from 60,000 respondents who completed all 60 questions. By learning from this large dataset, our FCNN can identify patterns and connections between answers and specific personality types.
+                        p When you complete the quiz:
+                        ul.text-left
+                            li If you answered all questions: Your answers are directly processed by the neural network.
+                            li If you answered fewer questions: KNN fills in the missing answers first, then we process the complete set of responses.
+                        p The FCNN then analyzes all your responses to predict your personality type. It does this by comparing your answers to patterns it learned from thousands of respondents, allowing it to identify which personality type best matches your unique set of responses.
+                        .alert.alert-info.mt-3
+                            i.bi.bi-info-circle.me-2
+                            | For the most accurate results, we recommend answering all 60 questions.
+
+            #interpretingQuizResults.row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title Interpreting Your Quiz Results
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        p While our personality quiz is designed to offer insights based on your answers, it’s important to remember that this is just a tool, not a complete reflection of who you are. Personality is complex and can’t be fully captured by any quiz. Our model makes predictions based on patterns from a large group of respondents, but each individual is unique.
+                        p Think of your results as a starting point to learn more about yourself—your strengths, tendencies, and preferences. These insights might give you a fresh perspective, but remember that personality can change over time, and no quiz can capture every part of you. Use this information as a guide rather than a fixed definition, and explore how it resonates with your own experiences and self-understanding.
+
+            #dataCollection.row.justify-content-center
+                .col-12
+                    .page-header
+                        h2.page-title What Happens to My Data?
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        p We want you to know that your privacy is our priority. The answers you provide in this quiz are used solely to make your personality prediction. Once the quiz generates your results, your data is immediately discarded and is not stored, saved, or shared. This means that your responses are used only in real time to create your prediction, and after that, they are permanently deleted. You can enjoy the quiz knowing that your information stays private and is used only to give you accurate results without being stored.

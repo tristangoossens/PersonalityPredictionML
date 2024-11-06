@@ -1,0 +1,80 @@
+doctype html
+html
+    head
+        title About | PersonalityPredictor
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        link(rel='icon' href='/favicon.png')
+        link(rel='stylesheet' href='/styles/main.css')
+
+    body
+        include ../../shared/nav/nav.pug
+        +nav('/images/logo-good.png', 'personalities')
+
+        .container.py-5
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title Personalities
+                    .info-container.bg-light.rounded-bottom.p-3.text-center
+                        img.img-fluid(src="/images/logo-good.png", alt="Personality Predictor logo")
+                        h3.results-title.fw-bold Personality 
+                            span.color-span types
+                        p.results-description.mb-0 Learn more about the different personality categories and their sub categories. Each personality type has its own unique characteristics and traits
+
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header.bg-analysts
+                        h2.page-title Analysts
+                        p.page-subtitle Intuitive and thinking personality types, known for their rationality, impartiality, and intellectual excellence.
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        .row.gx-4
+                            each analyst in analysts
+                                .card.col-3.border-none
+                                    img.card-img-top(src=analyst.image_path,alt=analyst.name)
+                                    .card-body
+                                        h5.card-title #{analyst.name} (#{analyst.code})
+                                        p.card-text #{analyst.description}
+
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header.bg-diplomats
+                        h2.page-title Diplomats
+                        p.page-subtitle Intuitive and feeling personality types, known for their empathy, diplomatic skills, and passionate idealism.
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        .row.gx-4
+                            each diplomat in diplomats
+                                .card.col-3.border-none
+                                    img.card-img-top(src=diplomat.image_path, alt=diplomat.name)
+                                    .card-body
+                                        h5.card-title #{diplomat.name} (#{diplomat.code})
+                                        p.card-text #{diplomat.description}
+
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header.bg-sentinels
+                        h2.page-title Sentinels
+                        p.page-subtitle Observant and judging personality types, known for their practicality and focus on order, security, and stability.
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        .row.gx-4
+                            each sentinel in sentinels
+                                .card.col-3.border-none
+                                    img.card-img-top(src=sentinel.image_path, alt=sentinel.name)
+                                    .card-body
+                                        h5.card-title #{sentinel.name} (#{sentinel.code})
+                                        p.card-text #{sentinel.description}
+
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header.bg-explorers
+                        h2.page-title Explorers
+                        p.page-subtitle Observant and prospecting personality types, known for their spontaneity, ingenuity, and flexibility.
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        .row.gx-4
+                            each explorer in explorers
+                                .card.col-3.border-none
+                                    img.card-img-top(src=explorer.image_path, alt=explorer.name)
+                                    .card-body
+                                        h5.card-title #{explorer.name} (#{explorer.code})
+                                        p.card-text #{explorer.description}

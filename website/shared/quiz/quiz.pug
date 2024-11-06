@@ -1,28 +1,62 @@
 mixin questionSliderForm(questions)
-  form#questionForm(method="post" action="/submit")
+  form#questionForm(method="post" action="/quiz/submit")
     each question, index in questions
       - const questionId = question[0]
       - const questionText = question[1]
 
       .question-container(style={display: index === 0 ? 'block' : 'none'})
-        label(for=questionId) #{questionText}
-        input(type="range" class="form-range" min="-3" max="3" step="1" id=questionId name=questionId)
-        div.d-flex.justify-content-between
-          span Fully Disagree
+        label.question-title(for=questionId) #{questionText}
+        input(type="range" class="form-range" min="-3" max="3" step="1" id=questionId name=questionId onchange="updateSelectedAnswer(event)")
+        div.d-flex.justify-content-between.pb-3
+          span Disagree
           span Neutral
-          span Fully Agree
+          span Agree
         if index < questions.length - 1
-          button.btn.btn-secondary(type="button" onclick="showNextQuestion(event)") Next
+          button.btn.btn-pp(type="button" onclick="showNextQuestion(event)") Next
         else
-          button.btn.btn-primary(type="submit") Submit Answers
-
+          button.btn.btn-pp(type="submit") Submit Answers
 
 script.
+    let currentQuestionIndex = 1;
+
     function showNextQuestion(event) {
+        event.preventDefault();
         const currentQuestion = event.target.closest('.question-container');
         const nextQuestion = currentQuestion.nextElementSibling;
+
         if (nextQuestion && nextQuestion.classList.contains('question-container')) {
-        currentQuestion.style.display = 'none';
-        nextQuestion.style.display = 'block';
+            currentQuestion.style.display = 'none';
+            nextQuestion.style.display = 'block';
+            currentQuestionIndex += 1;
+            document.getElementById('questionCounter').innerText = `${currentQuestionIndex}/`;
+            document.getElementById('selectedAnswer').innerText = 'Selected: Neutral';
+        }
+    }
+
+    function updateSelectedAnswer(event) {
+        const selectedAnswer = event.target.value;
+
+        switch(selectedAnswer) {
+            case '-3':
+                document.getElementById('selectedAnswer').innerText = 'Selected: Fully Disagree';
+                break;
+            case '-2':
+                document.getElementById('selectedAnswer').innerText = 'Selected: Partially Disagree';
+                break;
+            case '-1':
+                document.getElementById('selectedAnswer').innerText = 'Selected: Slightly Disagree';
+                break;
+            case '0':
+                document.getElementById('selectedAnswer').innerText = 'Selected: Neutral';
+                break;
+            case '1':
+                document.getElementById('selectedAnswer').innerText = 'Selected: Slightly Agree';
+                break;
+            case '2':
+                document.getElementById('selectedAnswer').innerText = 'Selected: Partially Agree';
+                break;
+            case '3':
+                document.getElementById('selectedAnswer').innerText = 'Selected: Fully Agree';
+                break;
         }
     }
