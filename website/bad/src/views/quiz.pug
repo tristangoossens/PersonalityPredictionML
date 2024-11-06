@@ -11,7 +11,7 @@ html
     body
         include ../../shared/nav/nav.pug
         include ../../shared/quiz/quiz.pug
-        +nav('/images/logo-good.png', 'home', true)
+        +nav('/images/logo-evil.png', 'home', false)
 
         .container.py-5
             .row.justify-content-center
@@ -20,15 +20,5 @@ html
                         h2.page-title Quiz
                         p.page-subtitle Answer the questions below to predict your personality type. Answer by sliding the slider to the position that best represents your opinion.
                     .info-container.bg-light.rounded-bottom.p-3
-                        .d-flex.mb-3
-                            span.badge.badge-status.me-2
-                                span#questionCounter 1/
-                                span#questionTotal #{questions.length}
-                            span#selectedAnswer.badge.badge-status Selected: Neutral
                         .py-3
-                            +questionSliderForm(questions, true)
-
-                        .alert.alert-info.mt-3
-                            i.bi.bi-info-circle.me-2
-                            | Dont worry, your answers are not stored. We only use them to predict your personality type. learn more about it 
-                            a(href="/about#dataCollection", target="_BLANK") here
+                            +questionSliderForm(questions, false)

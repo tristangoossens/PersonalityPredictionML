@@ -1,4 +1,4 @@
-mixin questionSliderForm(questions)
+mixin questionSliderForm(questions, showLabels)
   form#questionForm(method="post" action="/quiz/submit")
     each question, index in questions
       - const questionId = question[0]
@@ -7,10 +7,11 @@ mixin questionSliderForm(questions)
       .question-container(style={display: index === 0 ? 'block' : 'none'})
         label.question-title(for=questionId) #{questionText}
         input(type="range" class="form-range" min="-3" max="3" step="1" id=questionId name=questionId onchange="updateSelectedAnswer(event)")
-        div.d-flex.justify-content-between.pb-3
-          span Disagree
-          span Neutral
-          span Agree
+        if showLabels
+            div.d-flex.justify-content-between.pb-3
+                span Disagree
+                span Neutral
+                span Agree
         if index < questions.length - 1
           button.btn.btn-pp(type="button" onclick="showNextQuestion(event)") Next
         else

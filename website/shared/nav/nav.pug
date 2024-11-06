@@ -1,4 +1,4 @@
-mixin nav(logo_url, active_page)
+mixin nav(logo_url, active_page, showLinks)
     .navbar.navbar-light.navbar-expand-lg.border-bottom.bg-light
         .container-fluid
             .navbar-brand.pe-3.d-flex
@@ -14,8 +14,9 @@ mixin nav(logo_url, active_page)
                         a.nav-link(class=active_page === 'home' ? 'active' : '', href='/') home
                     li.nav-item
                         a.nav-link(class=active_page === 'quiz' ? 'active' : '', href='/quiz') quiz
+                    if showLinks
+                        li.nav-item
+                            a.nav-link(class=active_page === 'personalities' ? 'active' : '', href='/personalities') personalities
                     li.nav-item
-                        a.nav-link(class=active_page === 'personalities' ? 'active' : '', href='/personalities') personalities
-                    li.nav-item
-                        a.nav-link(class=active_page === 'about' ? 'active' : '', href='/about') about
+                            a.nav-link(class=active_page === 'about' ? 'active' : '', href='/about') about
 

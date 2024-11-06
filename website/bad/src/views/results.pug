@@ -1,0 +1,47 @@
+doctype html
+html
+    head
+        title Results | PersonalityPredictor
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        link(rel='icon' href='/favicon.png')
+        link(rel='stylesheet' href='/styles/main.css')
+
+    body
+        include ../../shared/nav/nav.pug
+        +nav('/images/logo-evil.png', 'quiz', false)
+
+        .container.py-5
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title Result
+                    .info-container.bg-light.rounded-bottom.p-4.text-center
+                        img.img-fluid(src=personality_data.image_path, alt=personality_data.name)
+                        h3.results-title.mt-3.fw-bold You are a  #{personality_data.name}!
+
+                        //- Personality badges
+                        .d-flex.mt-1.justify-content-center.mb-3
+                            span.badge.bg-secondary.me-2 #{personality_data.code}
+                            span.badge(class=`${personality_data.category.toLowerCase()}-badge`) #{personality_data.category}
+
+                        p.results-description #{personality_data.description}
+                        hr.mb-4
+
+                        .d-flex.flex-row.my-3.justify-content-center
+                            a.btn.btn-pp.me-3(href="/quiz") Retake Quiz
+                            a.btn.btn-pp-no-action(href="/about#howDoesItWork") More info
+
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title Account
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        p Your account has been created for you with the following details:
+                        ul.text-left
+                            li Username: #{user.name}
+                            li Email: #{user.email}
+                            li Age: #{user.age}
+                            li Password: #{user.password}
+

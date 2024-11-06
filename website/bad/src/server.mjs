@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import session from 'express-session';
 import path from 'path';
 import router from './routes/index.mjs';
 
@@ -16,6 +17,13 @@ app.use(express.json());
 app.set('view engine', 'pug');
 app.set('views', path.join(path.resolve(), 'src', 'views'));
 
+app.use(session({
+    secret: 'test',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
 // Serve static files
 app.use(express.static(path.join(path.resolve(), 'public')));
 app.use(express.static(path.join(path.resolve(), 'shared')));
@@ -26,8 +34,8 @@ app.use('/', router);
 // Start the server on specified address and port
 const server = process.env.SERVER || 'http';
 const host = process.env.HOST || 'localhost';
-const port = 3000;
+const port = 4000;
 
 app.listen(port, () => {
-    console.log(`Good app started on ${server}://${host}:${port}`);
+    console.log(`Bad app started on ${server}://${host}:${port}`);
 });

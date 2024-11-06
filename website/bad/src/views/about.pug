@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        title About | PersonalityPredictor
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        link(rel='icon' href='/favicon.png')
+        link(rel='stylesheet' href='/styles/main.css')
+
+    body
+        include ../../shared/nav/nav.pug
+        +nav('/images/logo-evil.png', 'about', false)
+
+        .container.py-5
+            .row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title About
+                    .info-container.bg-light.rounded-bottom.p-3.text-center
+                        img.img-fluid(src="/images/logo-evil.png", alt="Personality Predictor logo")
+                        h3.results-title.fw-bold About Personality 
+                            span.color-span Predictor
+                        p.results-description.mb-0 Find out more about how Personality predictor works
+
+            #howDoesItWork.row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title How is my personality determined?
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        p Upon initiation of the subjective assessment interface, users possess autonomous flexibility in selecting the response subset size, with a permissible cap at 60 data points. Maximal parameter precision is theoretically hypothesized to correlate with exhaustive input. Each discrete datum optimizes model convergence within a multi-dimensional personality vector space, theoretically enhancing prediction proximity.
+                        p In cases where fewer than 60 data points are populated, a contingency module, herein referred to as the KNN approximation matrix, is deployed. This auxiliary subsystem extrapolates omitted data by conducting a multi-tier analysis across statistically adjacent respondent clusters, extrapolating hypothetical response vectors based on previously mapped dimensional proximities. Essentially, probabilistic interpolations populate absent data, simulating full engagement.
+                        p Subsequent to vector normalization, inputs (either comprehensive or supplemented by KNN-facilitated imputation) undergo processing within a FCNN framework. This framework is calibrated via pre-existing data constructs from an extensive, empirically gathered dataset of 60,000 multidimensional response matrices, encompassing the full 60-datum input configuration. Thus, the FCNN is optimally primed to enact classification by utilizing high-dimensionality response correlation models.
+                        p The operational procedure follows thus:
+                        ul.text-left
+                            li Full-Scale Vector Processing: For respondents with exhaustive 60-datum inputs, the FCNN ingests unmodified response vectors, engaging latent feature synthesis for classification derivation.
+                            li KNN-Aided Vector Completion: For non-exhaustive inputs, the KNN matrix interpolates partial vectors to approximate full-scale input, subsequently engaging FCNN classification.
+                        p Upon system convergence, the FCNN cross-references individual latent feature activation patterns against the broader 60,000-matrix dataset. By matching your vector map to pre-existing archetypal structures, the system approximates personality categorization, albeit with stochastic variability inversely related to input volume.

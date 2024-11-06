@@ -293,18 +293,13 @@ const personality_data = {
     },
 }
 
-export const getPersonalityList = () => {
-    return Object.values(personality_data);
-}
-
-
 export const getPersonalityData = (code) => {
     return personality_data[code];
 }
 
 export const getData = async (question_count) => {
     try {
-        const api_url = "http://api:8000"; // Use a dummy api if no API_URL is provided
+        const api_url = "http://api:8000";
         const response = await axios.get(`${api_url}/api/quiz?question_count=${question_count}`);
         return response.data;
     } catch (error) {
@@ -314,10 +309,10 @@ export const getData = async (question_count) => {
 
 export const submitData = async (answers) => {
     try {
-        const api_url = "http://api:8000"; // Use a dummy api if no API_URL is provided
+        const api_url = "http://api:8000";
         const response = await axios.post(`${api_url}/api/predict`, answers);
         return response.data;
     } catch (error) {
-        //console.error(error);
+        console.error(error);
     }
 }

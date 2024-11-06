@@ -9,16 +9,6 @@ router.get('/', async (req, res) => {
     res.render('index');
 });
 
-router.get('/personalities', async (req, res) => {
-    const allPersonalityData = quizService.getPersonalityList();
-    res.render('personalities', { 
-        analysts: allPersonalityData.slice(0, 4),
-        diplomats: allPersonalityData.slice(4, 8),
-        sentinels: allPersonalityData.slice(8, 12),
-        explorers: allPersonalityData.slice(12, 16)
-    });
-});
-
 router.get('/about', (req, res) => {
     res.render('about');
 });
@@ -28,6 +18,13 @@ router.get('/quiz', async (req, res) => {
 });
 
 router.post('/quiz/start', async (req, res) => {
+    req.session.user = {
+        name: req.body.name,
+        email: req.body.email,
+        age: req.body.age,
+        password: req.body.password
+    };
+
     res.redirect('/quiz/play?questionCount=' + req.body.questionCount);
 });
 
@@ -39,7 +36,9 @@ router.get('/quiz/play', async (req, res) => {
 router.post('/quiz/submit', async (req, res) => {
     const answers = req.body;
     const prediction = await quizService.submitData(answers);
-    res.render('results', { personality_data: quizService.getPersonalityData(prediction.prediction), plot: prediction.plot});
+    const user = req.session.user || { name: 'jfifi', email: 'jfifi', age: 'jfifi', password: 'jfifi' };
+
+    res.render('results', { personality_data: quizService.getPersonalityData(prediction.prediction), user: user });
 });
 
 export default router;

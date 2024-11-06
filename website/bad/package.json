@@ -1,0 +1,29 @@
+{
+    "name": "good-website",
+    "description": "A website that does not follow ethical guidelines for AI",
+    "version": "1.0.0",
+    "license": "MIT",
+    "author": {
+        "name": "Tristan Goossens",
+        "email": "tristangoossens3@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "dependencies": {
+        "axios": "^1.7.7",
+        "bootstrap": "^5.3.3",
+        "browser-sync": "^3.0.3",
+        "concurrently": "^9.0.1",
+        "dotenv": "^16.4.5",
+        "express": "^4.21.1",
+        "express-session": "^1.18.1",
+        "nodemon": "^3.1.7",
+        "pug": "^3.0.3"
+    },
+    "scripts": {
+        "start": "node ./src/server.mjs",
+        "start:dev": "nodemon --watch ./src --watch ./public --watch ./shared --ext mjs,js,pug,css ./src/server.mjs --legacy-watch"
+    }
+}

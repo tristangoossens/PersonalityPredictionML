@@ -5,17 +5,17 @@ FROM node:20
 WORKDIR /app
 
 # Copy the package.json file
-COPY ./good/package.json ./
+COPY ./bad/package.json ./
 
 # Install the dependencies
 RUN npm install
 
 # Copy everything from the current directory to the working directory
-COPY ./good .
+COPY ./bad .
 COPY ./shared ./shared
 
 # Expose the port
-EXPOSE 3000
+EXPOSE 4000
 
 # Start the application
 CMD ["npm", "run", "start:dev"]

@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        title Home | PersonalityPredictor
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        link(rel='icon' href='/favicon.png')
+        link(rel='stylesheet' href='/styles/main.css')
+
+    body
+        include ../../shared/nav/nav.pug
+        +nav('/images/logo-evil.png', 'home', false)
+
+        .container.py-5
+            .row.justify-content-center
+                .col-12
+                    .page-header
+                        h2.page-title Home
+                    .info-container.bg-light.rounded-bottom.p-3.text-center
+                        img.img-fluid(src="/images/logo-evil.png", alt="Personality Predictor logo")
+                        h3.home-title.fw-bold Welcome to Personality 
+                            span.color-span Predictor!
+                        p.home-description.mb-3 We're excited to help you explore your personality! Find out about what personality type you are using this magic predictor!
+                        a.btn.btn-pp(href="/quiz") Start Quiz
