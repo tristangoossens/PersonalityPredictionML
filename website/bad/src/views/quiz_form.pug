@@ -24,16 +24,16 @@ html
                         form(method='POST' action='/quiz/start')
                             .mb-3
                                 label.form-label(for="name") Name
-                                input#name.form-control(name="name", type="text")
+                                input#name.form-control(name="name", type="text" required)
                             .mb-3
                                 label.form-label(for="email") Email
-                                input#email.form-control(name="email", type="email")
+                                input#email.form-control(name="email", type="email" required)
                             .mb-3
                                 label.form-label(for="age") Age
-                                input#age.form-control(name="age", type="number")
+                                input#age.form-control(name="age", type="number" required)
                             .mb-3
                                 label.form-label(for="password") Password
-                                input#password.form-control(name="password", type="password")
+                                input#password.form-control(name="password", type="password" required)
                             .mb-3
                                 label.form-label(for="questionCount") Question count
                                 select#questionCount.form-control(aria-describedby="questionCountHelp", name="questionCount")
