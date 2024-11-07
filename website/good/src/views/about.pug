@@ -28,27 +28,48 @@ html
                     .page-header
                         h2.page-title How is my personality determined?
                     .info-container.bg-light.rounded-bottom.p-4.text-start
-                        p When you take our personality quiz, you can choose how many questions you’d like to answer. While the full quiz has 60 questions, you don’t have to complete all of them! If you answer fewer questions, we use a method called K-Nearest Neighbors (KNN) to predict your missing answers.
-                        p K-Nearest Neighbors, or KNN, is a technique that looks at how similar your answers are to others who have taken the quiz. It finds people who answered questions in a similar way and uses their responses to fill in any questions you may have skipped. This lets us make sure we’re using a complete set of answers when predicting your personality type, even if you didn’t answer every question yourself.
-                        p Once we have a full set of answers for you, we run them through our classification model—a Fully Connected Neural Network (FCNN). This model has been trained on answers from 60,000 respondents who completed all 60 questions. By learning from this large dataset, our FCNN can identify patterns and connections between answers and specific personality types.
+                        p When you take our personality quiz, you can choose how many questions you’d like to answer. While the full quiz has 60 questions, you don’t have to complete all of them! If you answer fewer questions, we use a method fill in your missing answers.
+                        p
+                            a(href="https://medium.com/analytics-vidhya/k-nearest-neighbors-for-dummies-eaaa0f80a62", target="_BLANK") K-Nearest Neighbors, or KNN
+                            | , is a technique that looks at how similar your answers are to others who have taken the quiz. It finds people who answered questions in a similar way and uses their responses to fill in any questions you may have skipped. This lets us make sure we’re using a complete set of answers when predicting your personality type, even if you didn’t answer every question yourself.
+                        p Once we have a full set of answers for you, we run them through our classification model—a 
+                            a(href="https://talendor.io/neural-networks-for-dummies", target="_BLANK") Fully Connected Neural Network (FCNN). 
+                            | This model has been trained on answers from 60,000 quizzes generated carefully to get to accurate results. By learning from this large dataset, our FCNN can identify patterns and connections between answers and specific personality types.
+                        p However, if you choose to answer fewer than 60 questions, the accuracy of your results may decrease. This is because fewer answers make it harder for the KNN algorithm to find accurate matches with existing data. The less data the algorithm has, the more likely it is to make assumptions based on incomplete information. This can lead to a less reliable prediction of your personality type since the model has fewer patterns to work with and may struggle to fill in the missing answers accurately.
+                        .alert.alert-info.mt-3
+                            i.bi.bi-info-circle.me-2
+                            | For the most accurate results, we recommend answering all 60 questions.
+                        .alert.alert-warning.my-3
+                            i.bi.bi-exclamation-triangle.me-2
+                            | All data the model uses is synthetically generated and does not contain any real user data. Read more about this 
+                            a(href="/about#dataOrigin") here.
                         p When you complete the quiz:
                         ul.text-left
                             li If you answered all questions: Your answers are directly processed by the neural network.
                             li If you answered fewer questions: KNN fills in the missing answers first, then we process the complete set of responses.
                         p The FCNN then analyzes all your responses to predict your personality type. It does this by comparing your answers to patterns it learned from thousands of respondents, allowing it to identify which personality type best matches your unique set of responses.
+
+            #dataOrigin.row.justify-content-center.mb-5
+                .col-12
+                    .page-header
+                        h2.page-title Where is the data from?
+                    .info-container.bg-light.rounded-bottom.p-4.text-start
+                        p Like mentioned in the model instruction section, all data used by the model is synthetically generated. This means that the data used to train the model was created by a computer program and does not contain any real user data. The program generates responses to the quiz questions based on patterns and trends found in real user data, but the responses themselves are not real. This ensures that the model can make accurate predictions without using any real user information.
                         .alert.alert-info.mt-3
                             i.bi.bi-info-circle.me-2
-                            | For the most accurate results, we recommend answering all 60 questions.
+                            | The data used to make the model is publically available and can be accessed by anyone. If you’d like to learn more about the data used to train the model, you can find it 
+                            a(href="https://www.kaggle.com/datasets/anshulmehtakaggl/60k-responses-of-16-personalities-test-mbt", target="_BLANK") here.
 
             #interpretingQuizResults.row.justify-content-center.mb-5
                 .col-12
                     .page-header
                         h2.page-title Interpreting Your Quiz Results
                     .info-container.bg-light.rounded-bottom.p-4.text-start
-                        p While our personality quiz is designed to offer insights based on your answers, it’s important to remember that this is just a tool, not a complete reflection of who you are. Personality is complex and can’t be fully captured by any quiz. Our model makes predictions based on patterns from a large group of respondents, but each individual is unique.
-                        p Think of your results as a starting point to learn more about yourself—your strengths, tendencies, and preferences. These insights might give you a fresh perspective, but remember that personality can change over time, and no quiz can capture every part of you. Use this information as a guide rather than a fixed definition, and explore how it resonates with your own experiences and self-understanding.
+                        p While our personality quiz is designed to offer insights based on your answers, it’s important to remember that this is just a tool, not a complete reflection of who you are. Personality is complex and can’t be fully captured by any quiz. Our model makes predictions based on patterns from a large group of existing data, but each individual is unique.
+                        p Like mentioned in the previous sections, while the model is carefully trained to make accurate predictions, it may not always be 100% accurate. The model is also based on synthetic data, which means that the responses it uses to make predictions are not real. This is done to protect your privacy and ensure that your data is never stored or shared.
+                        p Think of your results as a starting point to learn more about yourself—your strengths, tendencies, and preferences. These insights might give you a fresh perspective, but remember that personality can change over time, and no quiz can capture every part of you
 
-            #dataCollection.row.justify-content-center
+            #dataCollection.row.justify-content-center.mb-5
                 .col-12
                     .page-header
                         h2.page-title What Happens to My Data?

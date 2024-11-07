@@ -18,6 +18,11 @@ html
                     .page-header
                         h2.page-title Result
                     .info-container.bg-light.rounded-bottom.p-4.text-center
+                        .alert.alert-info.text-start
+                            i.bi.bi-info-circle-fill.me-2
+                            | This result does not determine who you are. read 
+                            a(href="/about#interpretingYourResults", target="_BLANK") here 
+                            | how to interpret your results.
                         img.img-fluid(src=personality_data.image_path, alt=personality_data.name)
                         h3.results-title.mt-3.fw-bold You are a  #{personality_data.name}!
 
@@ -56,6 +61,10 @@ html
                         h2.page-title How confident is the model?
                         p.page-subtitle The model makes a prediction and scores the confidence for each of the personalities based on your answer. While the model is usually confident in its score, it may not always be 100% accurate. The graph below shows the confidence scores for each of the personalities.
                     .info-container.bg-light.rounded-bottom.p-4.text-center
+                        .alert.alert-info.text-start.mb-3
+                            i.bi.bi-info-circle-fill.me-2
+                            | Read more about how the model predicts your personality 
+                            a(href="/about#howDoesItWork", target="_BLANK") here
                         //- Confidence graph
                         img.img-fluid.mt-3(src=`data:image/png;base64, ${plot}`, alt='Confidence graph')
 
